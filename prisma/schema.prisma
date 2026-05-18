@@ -12,8 +12,6 @@ enum Role {
   ADMIN
 }
 
-// Comando: npx prisma db push - para criar a tabela no banco de dados
-// Comando: npx prisma db pull - para atualizar o schema.prisma com as tabelas do banco de dados
 model User {
   id        Int      @id @default(autoincrement())
   name      String
@@ -32,7 +30,7 @@ model Post {
   title    String
   subtitle String?
   content  String
-  userId   Int     @map("user_id") // Mapeia a coluna para "user_id" no banco de dados
+  userId   Int     @map("user_id")
   user     User    @relation(fields: [userId], references: [id])
 
   @@map("posts") // Mapeia a tabela para "posts" no banco de dados
